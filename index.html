@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template</title>
+    <title>Bookmar App</title>
     <link rel="icon" type="image/png" href="./favicon.bmp">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -36,7 +36,30 @@
         </div>
     </div>
 </div>
-
+    <!-- Modal -->
+    <div class="modal-container show-modal" id="modal">
+        <div class="modal">
+            <i class="fa-solid fa-xmark close-icon" id="close-modal"></i>
+            <div class="modal-header">
+                <h3>Ad Bookmark</h3>
+            </div>
+            <div class="modal-content">
+                <form id="bookmark-form">
+                    <!-- Websit name -->
+                    <div class="form-group">
+                        <label for="website-name" class="form-label">Website Name</label>
+                        <input type="text" class="form-input" id="website-name">
+                    </div>
+                    <!-- Websit URL -->
+                    <div class="form-group">
+                        <label for="website-url" class="form-label">Website URL</label>
+                        <input type="text" class="form-input" id="website-url">
+                    </div>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- SCRIPT-->
 <script src="./script.js"></script>
