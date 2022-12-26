@@ -8,7 +8,7 @@ const websiteNameEl = document.getElementById('website-name');
 const websiteUrlEl = document.getElementById('website-url');
 const bookmarksContainer = document.getElementById('bookmarks-container');
 
-let bookmarks = [];
+let bookmarks = {};
 
 // Show modal, focus on input
 
@@ -40,9 +40,11 @@ return true;
 
 // Build bookmarks DOM
 function buildBookmars() {
+    // remove all bookmark elemets
+    bookmarksContainer.textContent='';
     //build items
-    bookmarks.forEach((bookmark)=> {
-        const {name, url} = bookmark;
+   Object.keys(bookmarks).forEach((id) => {
+        const {name, url} = bookmarks[id];
         // item
         const item = document.createElement('div');
         item.classList.add('item');
@@ -56,6 +58,7 @@ function buildBookmars() {
            // Favicon
         const favicon = document.createElement('img');
         favicon.setAttribute('src', `https://s2.googleusercontent.com/s2/favicons?domain=${url}`);
+    
         favicon.setAttribute('alt', 'Favicon');
         //Link
         const link = document.createElement('a');
@@ -80,6 +83,16 @@ function fetchBookmarks() {
         localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
     }
     buildBookmars()
+}
+//delete bookmark
+function deleteBookmark(id) {
+	// Loop through the bookmarks array
+	if (bookmarks[id]) {
+		delete bookmarks[id]
+	}
+	// Update bookmarks array in localStorage, re-populate DOM
+	localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+	fetchBookmarks();
 }
 
 // Handling data from form
